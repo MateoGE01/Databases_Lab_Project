@@ -1,1 +1,0 @@
-#Se creará la base de datos en MongoDB con Python, usando el dataset en la carpeta Dataset
