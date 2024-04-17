@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework'
+    'rest_framework',
+    'laboratorio',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +79,11 @@ WSGI_APPLICATION = 'lab1database.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'basedatoslab1',
+        'USER': 'postgres',
+        'PASSWORD': 'Test1234',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
