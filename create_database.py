@@ -23,6 +23,7 @@ def add_dataset():
     conn.autocommit = True
     cur = conn.cursor()
 
+
     #Primero se DEBE BORRAR LA TABLA Y CAMBIAR POR OTRA(se cambiará este mensaje cuando el dataset ya no sea de colombianos sino otro)
     crear_tabla = """CREATE TABLE colombianos_detenidos_exterior_tabla (
         FECHA_PUBLICACION DATE,
@@ -52,6 +53,6 @@ def add_dataset():
     cur.close()
     conn.close()
 
-add_dataset()
+#add_dataset()
 
 

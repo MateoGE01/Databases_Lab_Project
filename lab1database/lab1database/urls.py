@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from laboratorio import router as laboratorio_router
+from laboratorio import router as laboratorio_router 
 
 api_url_patterns = [
     path(r'laboratorio/',include(laboratorio_router.router.urls)),
@@ -27,5 +27,7 @@ api_url_patterns = [
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(api_url_patterns))
+    path('api/', include(api_url_patterns)),
+    
+    
 ]
