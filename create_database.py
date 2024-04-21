@@ -1,11 +1,12 @@
 import csv
 import psycopg2
 
+#Función para crear la base de datos
 def create_database():
-    conn = psycopg2.connect(host='localhost', 
-                            dbname='testdb', 
-                            user='postgres', 
-                            password='Test1234')
+    conn = psycopg2.connect(host='ep-small-bird-a57v5cp4.us-east-2.aws.neon.tech', 
+                            dbname='neondb', 
+                            user='neondb_owner', 
+                            password='dD3LPs2nahNI')
     conn.autocommit = True
     cur = conn.cursor()
     cur.execute("CREATE DATABASE basedatoslab1")
@@ -14,16 +15,16 @@ def create_database():
 
 #create_database()
 
-
+#Función para crear la tabla con los datos del dataset
 def add_dataset():
-    conn = psycopg2.connect(host='localhost', 
+    conn = psycopg2.connect(host='ep-small-bird-a57v5cp4.us-east-2.aws.neon.tech', 
                             dbname='basedatoslab1', 
-                            user='postgres', 
-                            password='Test1234')
+                            user='neondb_owner', 
+                            password='dD3LPs2nahNI')
     conn.autocommit = True
     cur = conn.cursor()
 
-
+    #Debo cambiar este dataset por otro, el de los cursos online
     #Primero se DEBE BORRAR LA TABLA Y CAMBIAR POR OTRA(se cambiará este mensaje cuando el dataset ya no sea de colombianos sino otro)
     crear_tabla = """CREATE TABLE colombianos_detenidos_exterior_tabla (
         FECHA_PUBLICACION DATE,
