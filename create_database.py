@@ -4,10 +4,11 @@ import psycopg2
 #Función para crear la base de datos
 def create_database():
     conn = psycopg2.connect(
-                            host='ep-lively-scene-a5ep6js6.us-east-2.aws.neon.tech',
-                            database='neondb',
-                            user='neondb_owner',
-                            password='2nPY0bGaHwur')
+                            host='pg-9b1eec3-uninorte.h.aivencloud.com',
+                            database='defaultdb',
+                            user='avnadmin',
+                            password='AVNS_eSci7EKUL5XI0HTq6FC',
+                            port='21563')
     conn.autocommit = True
     cur = conn.cursor()
     cur.execute("CREATE DATABASE basedatoslab1")
@@ -19,10 +20,11 @@ def create_database():
 #Función para crear la tabla con los datos del dataset
 def add_dataset():
     conn = psycopg2.connect(
-                            host='ep-lively-scene-a5ep6js6.us-east-2.aws.neon.tech',
-                            database='neondb',
-                            user='neondb_owner',
-                            password='2nPY0bGaHwur')
+                            host='pg-9b1eec3-uninorte.h.aivencloud.com',
+                            database='basedatoslab1',
+                            user='avnadmin',
+                            password='AVNS_eSci7EKUL5XI0HTq6FC',
+                            port='21563')
     conn.autocommit = True
     cur = conn.cursor()
 
@@ -53,7 +55,7 @@ def add_dataset():
     cur.execute(crear_tabla)
     
     # Insertar datos desde el archivo CSV
-    with open('Dataset/CourClean.csv', 'r') as archivo_csv:
+    with open('Dataset/CourClean1.csv', 'r') as archivo_csv:
         lector = csv.reader(archivo_csv)
         next(lector)  # Saltar la cabecera
         
@@ -66,13 +68,13 @@ def add_dataset():
     cur.close()
     conn.close()
 
-#add_dataset()
+add_dataset()
 
 #Función para eliminar la tabla si existe
 def eliminar_tabla():
     conn = psycopg2.connect(
                             host='ep-lively-scene-a5ep6js6.us-east-2.aws.neon.tech',
-                            database='neondb',
+                            database='basedatoslab1',
                             user='neondb_owner',
                             password='2nPY0bGaHwur')
     conn.autocommit = True
