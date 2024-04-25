@@ -1,3 +1,0 @@
-Django admin panel login
-Username: labuser
-password: test1234

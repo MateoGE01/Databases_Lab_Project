@@ -10,11 +10,3 @@ class DatabaseViewSet(viewsets.ModelViewSet):
     serializer_class = DatabaseSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = '__all__'
-
-    """
-    1. por genero, cantidad de detenidos vs prisionpais
-    2. por año, tenidos vs pais
-    3. por año, cantidad de delito vs tipo de delito
-    4. por genero, cantidad de delito vs tipo de delito
-    5. por año, cantidad de si y cantidadad de no EXTRADITADO Y O REPATRIADO
-    """    

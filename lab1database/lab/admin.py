@@ -6,3 +6,4 @@ class DatabaseAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Database, DatabaseAdmin)
+

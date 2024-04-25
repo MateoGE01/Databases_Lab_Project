@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'laboratorio',
     'django_filters',
+    'lab'
+    
 ]
 
 MIDDLEWARE = [
@@ -81,10 +82,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'basedatoslab1',
-        'USER': 'postgres',
-        'PASSWORD': 'Test1234',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'USER': 'avnadmin',
+        'PASSWORD': 'AVNS_eSci7EKUL5XI0HTq6FC',
+        'HOST': 'pg-9b1eec3-uninorte.h.aivencloud.com',
+        'PORT': '21563',
     }
 }
 

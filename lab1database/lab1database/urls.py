@@ -16,18 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
-from laboratorio import router as laboratorio_router 
+from lab import router as lab_router
 
 api_url_patterns = [
-    path(r'laboratorio/',include(laboratorio_router.router.urls)),
-
+    path(r'datos/', include(lab_router.router.urls)),
 ]
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include(api_url_patterns)),
-    
-    
+    path('admin/', admin.site.urls), 
+    path('api/', include(api_url_patterns)),  
 ]

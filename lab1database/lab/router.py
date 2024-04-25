@@ -1,8 +1,7 @@
-
 from rest_framework import routers
 from .viewsets import DatabaseViewSet
 
-app_name = "laboratorio"
+app_name = 'lab'
 
 router = routers.DefaultRouter()
-router.register("database", DatabaseViewSet)
+router.register('base_de_datos', DatabaseViewSet)
