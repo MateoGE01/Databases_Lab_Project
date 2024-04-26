@@ -1,7 +1,6 @@
 from rest_framework import viewsets, mixins
 from .models import Database
 from .serializers import DatabaseSerializer, DatabaseGradevsDaysSerializer, NotaIndividualSerializer
-from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.db.models import Count, Avg
@@ -30,21 +29,19 @@ class DatabaseViewSet(viewsets.ModelViewSet):
         sorted_data = dict(sorted(results.items(), key=lambda item: item[1]))
         return Response(sorted_data)
     
-    #pais vs promedio de nota POR PAIS
+    #pais vs promedio de nota POR PAIS ORDENADO DE MAYOR A MENOR, se exluyeron las notas que tenían 0, porque vuelven los números extremeadamente bajos
     @action(detail=False, methods=['get'])
     def avggradePerCountry(self, request):
-        promedio = Database.objects.values('final_cc_cname_di').annotate(avg_grade=Avg('grade'))
-        return Response(promedio)
+        promedio = Database.objects.exclude(grade=0).values('final_cc_cname_di').annotate(avg_grade=Avg('grade')).order_by('-avg_grade')
+        return Response(list(promedio))
 
 
 #nota promedio del alumno vs cuantos dias duro activo en el curso. Filtro:Edad
 #Tener en cuenta que yob es el año de nacimiento, por lo que para obtener la edad se debe restar el año actual menos yob.
-class DatabaseGradevsDaysViewSet(viewsets.GenericViewSet,
-                      mixins.CreateModelMixin,
-                      mixins.RetrieveModelMixin,
-                      mixins.DestroyModelMixin,
-                      mixins.ListModelMixin,
-                      mixins.UpdateModelMixin): 
+class DatabaseGradevsDaysViewSet(viewsets.GenericViewSet,                   
+                      mixins.RetrieveModelMixin,                     
+                      mixins.ListModelMixin,): 
+    
     serializer_class = DatabaseGradevsDaysSerializer
 
     def get_queryset(self):
@@ -61,6 +58,7 @@ class DatabaseGradevsDaysViewSet(viewsets.GenericViewSet,
 class DatabaseNotaIndividualViewSet(viewsets.GenericViewSet,                   
                       mixins.RetrieveModelMixin,                     
                       mixins.ListModelMixin,):
+    
     serializer_class = NotaIndividualSerializer
 
     def get_queryset(self):
