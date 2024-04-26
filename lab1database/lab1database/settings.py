@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'lab',
-    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
-    'dpd_static_support',
 ]
 
 MIDDLEWARE = [
@@ -53,8 +51,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_plotly_dash.middleware.BaseMiddleware',
-    'django_plotly_dash.middleware.ExternalRedirectionMiddleware',
     
 ]
 
@@ -63,7 +59,7 @@ ROOT_URLCONF = 'lab1database.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,9 +135,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
-PLOTLY_COMPONENTS = [
-    'dpd_static_support',
-]

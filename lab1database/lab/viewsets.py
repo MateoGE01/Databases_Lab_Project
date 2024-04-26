@@ -14,7 +14,7 @@ class DatabaseViewSet(viewsets.ModelViewSet):
     filterset_fields = '__all__'
 
 
-#nota promedio del alumno vs cuantos dias duro activo en e curso. Filtro:Edad
+#nota promedio del alumno vs cuantos dias duro activo en el curso. Filtro:Edad
 #Este lo tengo que arreglar y hacerlo mejor
 class DatabaseGradevsDaysViewSet(viewsets.GenericViewSet,
                       mixins.CreateModelMixin,
@@ -24,6 +24,7 @@ class DatabaseGradevsDaysViewSet(viewsets.GenericViewSet,
                       mixins.UpdateModelMixin):
     queryset = Database.objects.filter(yob=2000)
     serializer_class = DatabaseSerializer
+    
 
 #nota individual y filtrar por dos cosas: nivel académico y género.
 class DatabaseNotaIndividualViewSet(viewsets.GenericViewSet,                   

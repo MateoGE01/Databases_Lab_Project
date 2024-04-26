@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from lab import router as lab_router
-from lab import views
+
 
 api_url_patterns = [
     path(r'datos/', include(lab_router.router.urls)),
@@ -27,5 +27,5 @@ api_url_patterns = [
 urlpatterns = [
     path('admin/', admin.site.urls), 
     path('api/', include(api_url_patterns)), 
-    path('dashboard/', views.dash_view, name='dashboard'), 
+    
 ]
