@@ -6,6 +6,11 @@ class DatabaseSerializer(serializers.ModelSerializer):
         model = Database
         fields = '__all__'
 
+class DatabaseGradevsDaysSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Database
+        fields = ['grade', 'ndays_act', 'yob']
+
 class NotaIndividualSerializer(serializers.ModelSerializer):
     class Meta:
         model = Database
