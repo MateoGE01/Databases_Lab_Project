@@ -21,13 +21,15 @@ class DatabaseViewSet(viewsets.ModelViewSet):
         total_rows = Database.objects.count()
         field_counts = Database.objects.filter(**{f'{field}': 1}).values('final_cc_cname_di').annotate(Count=Count('id'))
         
-        results = {}
-
+        results = []
+        
         for item in field_counts:
-            results[item['final_cc_cname_di']] = (item['Count'] / total_rows)*100
+            results.append({'final_cc_cname_di': item['final_cc_cname_di'], "Percentage": (item['Count'] / total_rows)*100})
 
-        sorted_data = dict(sorted(results.items(), key=lambda item: item[1]))
-        return Response(sorted_data)
+        results_sorted = sorted(results, key=lambda x: x['Percentage'])
+
+        
+        return Response(results_sorted)
     
     #pais vs promedio de nota POR PAIS ORDENADO DE MAYOR A MENOR, se exluyeron las notas que tenían 0, porque vuelven los números extremeadamente bajos
     @action(detail=False, methods=['get'])
