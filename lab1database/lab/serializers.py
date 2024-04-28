@@ -7,11 +7,16 @@ class DatabaseSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class DatabaseGradevsDaysSerializer(serializers.ModelSerializer):
+    ndays_act = serializers.SerializerMethodField()
+
     class Meta:
         model = Database
         fields = ['grade', 'ndays_act', 'yob']
 
-class NotaIndividualSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Database
-        fields = ['grade', 'gender', 'loe_di']
+    def get_ndays_act(self, obj):
+        if obj.ndays_act is not None:
+            return obj.ndays_act
+        else:
+            return 0
+        
+
