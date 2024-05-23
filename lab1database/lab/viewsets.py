@@ -60,3 +60,5 @@ class DatabaseViewSet(viewsets.ModelViewSet):
         students = Database.objects.filter(registered=1).annotate(year_month=year_month).values('year_month', 'final_cc_cname_di').annotate(registrados=Count('id')).order_by('year_month')
         
         return Response(list(students))
+    
+    
